@@ -1,0 +1,285 @@
+body {
+    background-color: #171A21; 
+    
+}
+
+.formC{
+  margin-left: 40px;
+  width: 60%;
+}
+
+.createH1 {
+  font-family: "Monoton";
+}
+.caja1 {
+    width: 48%;
+    height: 450px;
+    float: left;
+    background-color:#171A21 ;
+    color: antiquewhite;
+    box-shadow: 1px 2px 4px #09f;
+
+
+    
+}
+
+.caja1:after {
+  width: 48%;
+  height: 450px;
+  float: left;
+  background-color:#171A21 ;
+  color: antiquewhite;
+  box-shadow: 0 15px 20px #09f;
+
+  
+}
+
+.caja2 {
+    width: 48%;
+    height: 450px;
+    float: left;
+    background-color: #171A21;
+    color:  antiquewhite;
+    box-shadow: 1px 2px 4px #09f;
+    
+}
+
+.caja2 ::after {
+  width: 48%;
+  height: 450px;
+  float: left;
+  background-color: #171A21;
+  color:  antiquewhite;
+  box-shadow: 0 15px 20px #09f;
+}
+
+
+img {
+ height: 500px;
+}
+
+.conten {
+    margin-top: 50px;
+}
+
+.conten2 {
+    margin-top: 50px;
+}
+
+.divs {
+    position: relative;
+    height: 50px;
+    width: 90%;
+    margin-bottom: 25px; 
+}
+
+.lbl-nombre{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70%;
+  height: 70%;
+  pointer-events: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lbl-nombre:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.input {
+    top: 0px;
+    left: 0px;
+    height: 50%;
+    width: 85%;
+    background: none;
+    color: white;
+    padding-top: 20px;
+    border: none;
+    outline: 0px;
+    border-bottom: 1px solid white;
+    
+    
+  }
+
+  .text-nomb{
+    position: absolute;
+    bottom: 5px;
+    left: 25px;
+    transition: all 0.3s ease;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .input:focus + .lbl-nombre .text-nomb, input:valid + .lbl-nombre .text-nomb{
+    transform: translateY(-150%);
+    font-size: 14px;
+   
+  }
+  .input:focus + .lbl-nombre:after, input:valid + .lbl-nombre:after{
+    transform: translateX(0%);
+  }
+  @media only screen and (min-width:320px) and (max-width:768px){
+   .form{
+    width:85%;
+  }
+  }
+
+
+  .divs2 {
+    height: 160px;
+    width: 100%; 
+    color: antiquewhite;
+}
+
+
+.opciones {
+  float: left;
+  font-size: 13px;
+  margin: 2px;
+
+}
+
+
+
+.btn {
+  display: flex; 
+  justify-content: center;
+  float: left;
+  width: 60%;
+
+}
+.button {
+  border: 0;
+  background-image: linear-gradient(
+   150deg,
+    antiquewhite,
+   #09f,
+   #171A21
+  );
+
+  border-radius: 8px;
+  color: antiquewhite;
+  display: flex;
+  font-size: 18px;
+  padding: 4px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.button span {
+  background-color: #171A21 ;
+  padding: 16px 24px;
+  border-radius: 6px;
+  transition: .3s;
+}
+
+.button :hover span {
+ background: none;
+
+}
+
+.button :active {
+  transform: scale(0.9);
+
+}
+
+h1 {
+  color: antiquewhite;
+  font-family:  sans-serif;
+}
+
+.imag2 {
+  float: left;
+  width: 250px;
+  display: flex;
+  justify-content: right;
+  height: 500px;
+}
+
+.imag {
+  float: right;
+  width: 200px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 500px;
+}
+
+
+
+
+/* .form{
+  width: 100%;
+  height: 50px;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+.form input{
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #fff;
+  padding-top: 20px;
+  border: none;
+  outline: 0px;
+}
+.form .lbl-nombre{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #c7c7c7;
+}
+.form .lbl-nombre:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #2ecece;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+.text-nomb{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+input:focus + .lbl-nombre .text-nomb,.form input:valid + .lbl-nombre .text-nomb{
+  transform: translateY(-150%);
+  font-size: 14px;
+  color: #2ecece;
+}
+input:focus + .lbl-nombre:after, .form input:valid + .lbl-nombre:after{
+  transform: translateX(0%);
+}
+@media only screen and (min-width:320px) and (max-width:768px){
+ .form{
+  width:85%;
+}
+  } */
+
+
+
+
+
+
+
+
+
+
+
+

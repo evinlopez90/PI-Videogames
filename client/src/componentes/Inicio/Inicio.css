@@ -1,0 +1,99 @@
+.containerI {
+    width: 95%;
+    height: 100%;
+    margin: 1px;
+    padding: 1px;
+    background-color: #171A21;
+    color: antiquewhite;
+}
+
+.caja1I {
+    height: 100%;
+    width: 50%;
+    float: left;
+    padding-top: 140px;
+    margin-left: 50px;
+
+}
+
+
+.divsI {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    margin: 0;
+    margin-left: 50px;
+}
+
+
+
+.h1I {
+    font-size: 40px;
+    margin: 0;
+    margin-top: 7px;
+    margin-right: 20px;
+    border-bottom: 1px solid  antiquewhite;
+    color: antiquewhite;
+    font-family: "Monoton";
+}
+ .h12I{
+    font-size: 50px;
+    margin: 0;
+   color: #09f;
+   font-family: "Monoton";
+    
+}
+
+.caja2I {
+    box-shadow: 1px 2px 4px #09f;
+}
+
+.caja2I  ::after{
+    box-shadow: 0 15px 20px #09f;
+}
+
+
+
+.divsI p {
+    text-align: left;
+    margin-bottom: 70px;
+    width: 500px;
+    color: antiquewhite;
+}
+
+.divsI button {
+  
+   border: 0;
+   background-image: linear-gradient(
+    150deg,
+     antiquewhite,
+    #09f,
+    #171A21
+   );
+
+   border-radius: 8px;
+   color: antiquewhite;
+   display: flex;
+   font-size: 18px;
+   padding: 4px;
+   cursor: pointer;
+   transition: .3s;
+}
+
+button a {
+    background-color: #171A21 ;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: .3s;
+    text-decoration: none;
+}
+
+button :hover span {
+   background: none;
+
+}
+
+button :active {
+    transform: scale(0.9);
+
+}

@@ -1,0 +1,66 @@
+.VContainer {
+    height: 100%;
+    margin: 10px;
+    padding: 1px;
+    margin-top: 30px;
+    
+}
+
+.Vcaja1 {
+    margin: 20px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.Vcaja1 div {
+    float: left;
+    width: 40%;
+    align-items: center;
+}
+
+.Vcaja1 div img {
+    height: 330px;
+   margin-top: -70px;
+   
+    
+}
+
+.Vcaja1 div h1 {
+    margin-top: 50px;
+    color: antiquewhite;
+    width: 80%;
+    text-align: right;
+}
+
+
+.Vcaja2 {
+ margin-left: 100px;
+width: 95%;
+    
+}
+
+hr {
+  margin-top: 70px;
+  width: 80%;
+  box-shadow: 1px 2px 4px #09f;
+}
+
+hr ::after {
+    box-shadow: 0 15px 20px #09f;
+}
+
+.Rdivs {
+    display: flex;
+   justify-content: left;
+   color: antiquewhite;
+   font-size: 15px;
+   margin: 10px;
+}
+
+.texto h1 {
+    font-family: "Monoton";
+    width: 100px;
+    font-size: 30px;
+    
+}

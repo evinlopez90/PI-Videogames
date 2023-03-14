@@ -1,0 +1,58 @@
+.containerA {
+    height: 100%;
+    margin: 10px;
+    padding: 80px;
+}
+
+.caja1A {
+   float: left;
+   width: 50%;
+   margin-top: 70px;
+   margin-left: 70px;
+   
+}
+
+.caja1A h1 {
+    font-family: "Monoton";
+}
+
+.caja1A img {
+    height: 80px;
+    width: 20%;
+    margin: 20px;
+    float: left;
+    display: flex;
+    justify-content: center;
+}
+
+.caja2A {
+    float: left;
+    width: 40%;
+    margin-right: 40px;
+    margin-top: 65px;
+
+
+}
+
+.divsA {
+    height: 20%;
+    display: flex;
+    justify-content: right;
+    
+}
+
+.divsA p {
+    color: antiquewhite;
+    text-align: right;
+    width: 70%;
+}
+
+.h12A {
+    color: #09f;
+     margin-right: 20px;
+     font-family: "Monoton";
+}
+
+.h11A  {
+    font-family: "Monoton";
+}
