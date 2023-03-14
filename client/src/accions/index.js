@@ -85,7 +85,7 @@ export function getVideogames() {
     let filteredGames = [];
     
       if (genres === "default") {
-          filteredGames = getState().videogames;
+          filteredGames = getState().defaultVideogame;
       } else {
         // metemos en el array todos los juego que incluyan el genero que pide el usuario
         filteredGames = getState().videogames.filter((game) =>
@@ -110,11 +110,11 @@ export function getVideogames() {
       if(getState().filteredVideogames.length === 0) {
         filtered = getState().videogames
       } else {
-       filtered = getState().filteredVideogames
+       filtered = getState().defaultFilteredVideogames
       }
       if(type === "default") {
         if(getState().filteredVideogames.length === 0 ) {
-          videogamesOrder = getState().videogames
+          videogamesOrder = getState().defaultVideogame
          } else {
           videogamesOrder = getState().filteredVideogames
          }
@@ -149,7 +149,7 @@ export function getVideogames() {
        if(getState().filteredVideogames.length === 0) {
         filtered =  getState().videogames
        } else {
-        filtered = getState().filteredVideogames
+        filtered = getState().defaultFilteredVideogames
        }
      
     
@@ -157,7 +157,7 @@ export function getVideogames() {
 
     if(type === "default") {
         if(getState().filteredVideogames.length === 0  ) {
-          videogamesOrder = getState().videogames
+          videogamesOrder = getState().defaultVideogame
          } else {
           videogamesOrder = getState().filteredVideogames
          }

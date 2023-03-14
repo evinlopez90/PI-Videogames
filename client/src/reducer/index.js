@@ -1,14 +1,14 @@
 const initialState = {
     videogames: [],
     genres: [],
-    searchVideogame: [],
+    defaultFilteredVideogames: [],
     createVideogame: null,
     searchVideogameById: [],
     searchVideogameByName: [],
     filteredVideogames: [],
     orderBy: "defaul",
     filterBy: "defaul",
-    defaultVideogameFilter: []
+    defaultVideogame: []
   };
   
   export default function rootReducer(state = initialState, action) {
@@ -17,6 +17,7 @@ const initialState = {
         return {
           ...state,
           videogames: action.payload,
+          defaultVideogame: action.payload
         };
   
       case "SEARCH_VIDEOGAMES" :
@@ -50,7 +51,7 @@ const initialState = {
         return {
           ...state,
           filteredVideogames: action.payload.videogameGenre,
-          searchVideogameByName: action.payload.videogameGenre,
+          defaultFilteredVideogames: action.payload.videogameGenre,
           filterBy: action.payload.genre,
         };
   

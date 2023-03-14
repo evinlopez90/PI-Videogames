@@ -95,6 +95,17 @@ function CreateGame() {
       alert("Hey! el rating debe estar entre 0 and 5.");
       return;
     }
+
+
+    if(obj.genres.length === 0) {
+     alert("Oye! elige un genero")
+     return
+    }
+
+    if(obj.platforms.length === 0) {
+      alert("Oye! elige una plataforma")
+      return
+     }
     // creo el juego una vez que cada uno de los capmos cumplan las condiciones
     dispatch(createVideogame(obj));
 
