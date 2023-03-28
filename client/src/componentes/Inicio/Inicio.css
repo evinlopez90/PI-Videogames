@@ -3,8 +3,9 @@
     height: 100%;
     margin: 1px;
     padding: 1px;
-    background-color: #171A21;
-    color: antiquewhite;
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+    display: flex;
 }
 
 .caja1I {
@@ -32,25 +33,34 @@
     margin: 0;
     margin-top: 7px;
     margin-right: 20px;
-    border-bottom: 1px solid  antiquewhite;
+    border-bottom: 1px solid  var(--main-color);
     color: antiquewhite;
     font-family: "Monoton";
 }
  .h12I{
     font-size: 50px;
     margin: 0;
-   color: #09f;
+   color: var(--main-border-color);
    font-family: "Monoton";
     
 }
 
 .caja2I {
-    box-shadow: 1px 2px 4px #09f;
+   
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding-top: 140px;
+    
 }
 
-.caja2I  ::after{
-    box-shadow: 0 15px 20px #09f;
+.caja2I img {
+    width: 70%;
+    height: 70%;
+    
 }
+
+
 
 
 
@@ -58,7 +68,7 @@
     text-align: left;
     margin-bottom: 70px;
     width: 500px;
-    color: antiquewhite;
+    color: var(--main-color);
 }
 
 .divsI button {
@@ -70,9 +80,9 @@
     #09f,
     #171A21
    );
-
-   border-radius: 8px;
-   color: antiquewhite;
+   width: 97px;
+   height: 50px;
+   color: var(--main-color);
    display: flex;
    font-size: 18px;
    padding: 4px;
@@ -81,11 +91,13 @@
 }
 
 button a {
-    background-color: #171A21 ;
-    padding: 16px 24px;
-    border-radius: 6px;
+    background-color: var(--main-bg-color);
+    padding: 10px 12px;
     transition: .3s;
     text-decoration: none;
+    text-align: center;
+    height: 50%;
+    width: 80%;
 }
 
 button :hover span {

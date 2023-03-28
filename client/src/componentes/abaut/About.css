@@ -2,24 +2,26 @@
     height: 100%;
     margin: 10px;
     padding: 80px;
+    width: 76%;
+    float: left;
 }
 
 .caja1A {
    float: left;
-   width: 50%;
+   width: 40%;
    margin-top: 70px;
-   margin-left: 70px;
    
 }
 
 .caja1A h1 {
     font-family: "Monoton";
+    font-size: 20px;
 }
 
 .caja1A img {
     height: 80px;
-    width: 20%;
-    margin: 20px;
+    width: 25%;
+    margin: 10px;
     float: left;
     display: flex;
     justify-content: center;
@@ -27,9 +29,10 @@
 
 .caja2A {
     float: left;
-    width: 40%;
-    margin-right: 40px;
+    width: 35%;
+    
     margin-top: 65px;
+    
 
 
 }
@@ -41,14 +44,19 @@
     
 }
 
+.divsA h1 {
+    font-size: 20px;
+}
+
 .divsA p {
-    color: antiquewhite;
+    color: var(--main-color);
     text-align: right;
     width: 70%;
+    
 }
 
 .h12A {
-    color: #09f;
+    color: var(--main-color);
      margin-right: 20px;
      font-family: "Monoton";
 }

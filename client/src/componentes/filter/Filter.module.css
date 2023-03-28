@@ -1,0 +1,43 @@
+.container {
+   height: 250px;
+   padding: 10px;
+  
+}
+
+.select {
+    margin: 5px;
+    display: flex;
+    margin: 10px;
+    margin-left: 10px;
+    height: 30px;
+    width: 80%;
+}
+
+.select select {
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    color: var(--main-color);
+    font-family: "Monoton";
+    font-size: 14px;
+}
+
+
+.select option {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 12x;
+    background-color: var(--main-bg-color);
+}
+
+.defautl {
+    font-family: "Monoton";
+}
+
+.select select:hover {
+    border-left: 2px solid var(--main-border-color);
+}
+

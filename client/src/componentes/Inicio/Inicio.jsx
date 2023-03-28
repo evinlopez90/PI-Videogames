@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import './Inicio.css'
-import image from "../../imagenes/ini.png"
+import image from "../../imagenes/welcome.png"
 import {useNavigate} from "react-router-dom"
 
 

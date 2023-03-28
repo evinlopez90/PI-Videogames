@@ -1,3 +1,10 @@
 .page404 {
-    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.page404 img {
+    display: flex;
+    justify-content: center;
 }

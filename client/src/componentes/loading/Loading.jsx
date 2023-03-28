@@ -3,7 +3,8 @@ import "./Loading.css"
 function Loading() {
   return (
     <div  className='loading'>
-       <img src="https://i.pinimg.com/originals/9b/1e/8c/9b1e8c44f6087ffea7882b9fcb8f4775.gif" alt="" />
+      <span>Espera...</span>
+       <img src="https://i.pinimg.com/originals/fb/f4/b4/fbf4b4b5b982c142d6b25d8bf45daa40.gif" alt="" />
     </div>
   )
 }

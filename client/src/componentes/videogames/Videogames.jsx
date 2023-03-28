@@ -1,40 +1,41 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {  useState } from 'react'
-import  imagen from '../../imagenes/CG.png'
 import './Videogames.css'
-import {  useSelector } from 'react-redux'
-
+import {   useSelector } from 'react-redux'
+import logo from "../../imagenes/game.png"
 import Cards from '../cards/Cards'
-import Filter from '../filter/Filter'
 import Pagination from '../pagination/Pagination'
 import Loading from '../loading/Loading'
+
+
 function Videogames() {
- 
-  let videoGames = useSelector((state) => state.videogames)
-  let filterGames = useSelector((state) => state.filteredVideogames)
-   
-  let games;
 
-
-  if(filterGames.length  === 0) {
-    games = videoGames
-  } else {
-    games = filterGames
-  }
- 
-  
-
-
-
-
-  
-
-// paginacion 
+  let videogames = useSelector((state) => state.videogames)
   const [page, setPage] = useState(1);
 	const [videogamesPerPage] = useState(15);
+
+console.log(videogames);
+ if(typeof videogames === "string") {
+
+    return (
+          <div className='noVideo'>
+          <div className='Vcaja1'>
+         <div>
+          <img src={logo} alt="" />
+         </div>
+        </div>
+         <div className='noGames'>
+         <h1 >No  videogames</h1>
+         </div>
+      </div>
+    )
+ } else {
+   
+// paginacion 
+ 
   let lastCardPerPage = page * videogamesPerPage;
 	let firtsCardPerPage = lastCardPerPage - videogamesPerPage;
-	let currentPageGames = games.slice(firtsCardPerPage, lastCardPerPage);
+	let currentPageGames = videogames.slice(firtsCardPerPage, lastCardPerPage);
 
   function paginate (number, length) {
     if(typeof(number) !== "object") {
@@ -57,43 +58,59 @@ function Videogames() {
    
 
   }
+   let imaDefault = "https://www.shutterstock.com/image-vector/default-image-icon-vector-missing-260nw-2086941550.jpg"
 
+   
+
+   
     return (
       <div className='VContainer'>
-        <div className='Vcaja1'>
+
+        <>
+         <div className='Vcaja1'>
          <div>
-          <img src={imagen} alt="" />
-         </div>
-  
-         <div className='texto'>
-          <h1>Explore all the games offered by the RAWG Database API</h1>
+          <img src={logo} alt="" />
          </div>
         </div>
   
-        <hr />
+        </>
+       
+      
+       
 
-        <Filter   />
+       
   
         <div className='Vcaja2'>
            { currentPageGames.length ? currentPageGames.map(g => (
             <div key={g.id}>
                <Cards 
             id = {g.id}
-            image = {g.image}
+            image = {g.image ? g.image : imaDefault }
             name = {g.name}
             genre = {g.genres}
+            rating = {g.rating}
            
             />
             </div>
-           ))  : <Loading/>}
+           ))  : <Loading/> }
         </div>
       
-        <Pagination videogamesPerPage={videogamesPerPage} totalVideogames={games.length} paginate={paginate}/>
-  
+        <Pagination
+         videogamesPerPage={videogamesPerPage} 
+         totalVideogames={videogames.length}
+          paginate={paginate}
+          page={page}/>
+         
       </div>
     )
-     }
+ }
+
+
+
   
+
+     }
+    
    
    
 

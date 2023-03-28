@@ -3,8 +3,8 @@ import React from 'react'
 
 import "./Pagination.css"
 
-function Pagination({ videogamesPerPage, totalVideogames, paginate }) {
-
+function Pagination({ videogamesPerPage, totalVideogames, paginate, page }) {
+  
   const pageNumbers = [];
   const numOfPages = Math.ceil(totalVideogames / videogamesPerPage)
 
@@ -14,18 +14,18 @@ function Pagination({ videogamesPerPage, totalVideogames, paginate }) {
 
   return (
    <div className='pagination'>
-    <button onClick={() => paginate({num: -1}, pageNumbers.length)}></button>
+    { totalVideogames > 1  ? <button onClick={() => paginate({num: -1}, pageNumbers.length)}></button> : null}
     <ul className="ulP">
     {pageNumbers.map((num) => (
-      <li key={num} className="item">
-        <a onClick={() => paginate(num)}>
+      <li key={num} >
+        <a onClick={() => paginate(num)}  className={num === page ? "active" : ""} >
           {num}
         </a>
       </li>
     ))}
 </ul>
 
- <button className='btn' onClick={() => paginate({num: +1}, pageNumbers.length)}></button>
+ {totalVideogames > 1 ? <button className='btn' onClick={() => paginate({num: +1}, pageNumbers.length)}></button> : null}
    </div>
   )
 }

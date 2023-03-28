@@ -4,11 +4,14 @@
 
                 
 body {
+  --main-bg-color: black;
+--main-color: antiquewhite ;
+--main-border-color: #09f ;
   margin: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 30px;
+  padding: 10px;
 }
 
 code {

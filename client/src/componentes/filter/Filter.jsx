@@ -1,87 +1,103 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import './Filter.css'
-import {getGenres,
-     filterByGenre,
-      orderByCreator, 
-      orderAsc,
-      orderDesc, getVideogames
-} from '../../accions/index'
-import { useLocation } from 'react-router-dom'
+
+import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { createOrApi, filterByGenre, rating, alfabetic, } from '../../accions'
+import styles from "./Filter.module.css"
+
+
+
 function Filter() {
+    let dispatch = useDispatch()
+   
+    let genres = useSelector((state) => state.genres)
+     
 
-    const dispatch = useDispatch()
-    let location = useLocation()
 
-    const genres = useSelector((state) => state.genres)
+    const [habilit, sethabilit] = useState({
+        habi: "default"
+    })
+  
     
-    useEffect(() => {
-        dispatch(getGenres())
-        dispatch(getVideogames())
-    }, [])
-    let locat;
-    if(location.pathname === "/home") {
-        locat = "home"
-    } 
-    console.log(location.pathname)
-    if(location.pathname === "/resuls") {
-        locat = "results"
-    }
-    console.log(locat)
-    // filtrar
-    const handleSelect = (e) => {
-       if(e.target.value === 'creado' || e.target.value === 'Api' ) {
-        dispatch(orderByCreator(e.target.value, locat))
-        dispatch(getVideogames())
+
+
+   const  hanledOpcions = (e) => {
+     if(e.target.name === "apiOrCreate") {
+        dispatch(createOrApi(e.target.value))
+        sethabilit({
+            ...habilit,
+            habi: e.target.value
+        })
+        if(e.target.value === "default") {
+      
+        }
+     }
+     else if(e.target.name === "rating") {
+        sethabilit({
+            ...habilit,
+            habi: e.target.value
+        })
+
+        dispatch(rating(e.target.value))
+     }
+     else if(e.target.name === "genres") {
+        dispatch(filterByGenre(e.target.value))
+        sethabilit({
+            ...habilit,
+            habi: e.target.value
+        })
+       
+     }
+     else if(e.target.name === "alfabetic") {
+        dispatch(alfabetic(e.target.value))
+        sethabilit({
+            ...habilit,
+            habi: e.target.value
+        })
         
-       } else {
-        dispatch(filterByGenre(e.target.value, locat))
-        dispatch(getVideogames())
-       
-       }
-    }
-     // ordenar
-    const handleSelect2 = (e) => {
-       if(e.target.value === 'asc_name' || e.target.value === 'asc_rating' || e.target.value === "default") {
-        dispatch(orderAsc(e.target.value, locat))
-        dispatch(getVideogames())
-        
-       } else if (
-          e.target.value === 'desc_name' || e.target.value === 'desc_rating' || e.target.value === "default"
-       ) {
-        dispatch(orderDesc(e.target.value, locat))
-        dispatch(getVideogames())
-       
-       } else {
-        dispatch(filterByGenre(e.target.value, locat))
-        dispatch(getVideogames())
-       
-       }
-    }
+     }
+     console.log(e.target.name)
+   }
 
    
     return (
-        <div className='container-div'>
-            <select  className="selectCont" onChange={handleSelect} name="" id="">
-                <option className="option" value="default">Filter by:</option>
-                    <option className="option" value="creado">Created</option>
-              
-                    <option className="option" value="Api">Api</option>         
-                <optgroup className="optionGroup" label="Generos">
-                    {genres && genres.map(g => <option key={g.name} value={g.name}>{g.name}</option>)}
-                </optgroup>                
-            </select>
-            <select  className="selectCont" onChange={handleSelect2} name="" id="">
-                <option className="option" value="default">Order</option>
-    
-                    <option className="option" value="asc_rating">less relevance</option>
-                    <option className="option" value="desc_rating">Relevance</option>             
-                    <option className="option" value="asc_name">a - z</option>
-                    <option className="option" value="desc_name">z - a</option>
-                   
-            </select>
-        </div>
+       <div className={styles.container}>
+<div className={styles.select}>
+   <select name="genres"  onChange={(e) => hanledOpcions(e)} >
+      <option className='defautl' value="default">Genres</option>
+     {genres && genres.map(g => (
+        <>
+      <option value={g.name}  >{g.name}</option> 
+      
+        </>
+     ))}
+   </select>
+</div>
+
+<div className={styles.select}>
+   <select  name="rating"  onChange={(e) => hanledOpcions(e)}>
+      <option className='defautl' value="default">Rating</option>
+      <option value="relevance" >relevance</option>
+      <option value="less relevance" >less relevance</option>
+   </select>
+</div>   
+
+<div className={styles.select}>
+   <select name="alfabetic"   onChange={(e) => hanledOpcions(e)}>
+      <option className='defautl' value="default">Alfabetic</option>
+      <option value="a-z">a-z</option>
+      <option value="z-a" >z-a</option>
+   </select>
+</div>
+
+<div className={styles.select}>
+   <select name="apiOrCreate"  onChange={(e) => hanledOpcions(e)}>
+      <option className='defautl' value="default" >Api or create</option>
+      <option value="Api">Api</option>
+      <option value="create">Create</option>
+     
+   </select>
+</div>
+       </div>
     )
 }
 

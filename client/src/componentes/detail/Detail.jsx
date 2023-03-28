@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import "./Detail.css"
 import {getVideogameById} from "../../accions/index"
 
@@ -8,13 +8,15 @@ function Detail() {
  let {id} = useParams()
 
 let dispatch = useDispatch()
-
+let history = useNavigate()
+console.log(history);
 useEffect(() => {
     dispatch(getVideogameById(id))
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 let game = useSelector((state) => state.searchVideogameById)
+
 
 
 
@@ -63,6 +65,9 @@ let game = useSelector((state) => state.searchVideogameById)
         </div>
 
        </div>
+       {/* <div className='btnDetail'>
+       <button>Volver</button>
+       </div> */}
     </div>
    </div>
   )

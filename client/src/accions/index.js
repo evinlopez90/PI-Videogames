@@ -7,7 +7,9 @@ export function getVideogames() {
       return fetch(`http://localhost:3096/videogames`)
         .then(response => response.json())
         .then(json => {
-          dispatch({ type: "GET_VIDEOGAMES", payload: json });
+          dispatch({
+             type: "GET_VIDEOGAMES",
+             payload: json });
         });
     };
   }
@@ -80,130 +82,140 @@ export function getVideogames() {
   
   // aca filtro por generos los juego que trae la actions getVideogames 
   // recibo como parametro el valor que viene desde filter.jsx con el dispatch y el getState de redux
-  export const filterByGenre = (genres) => (dispatch, getState) => {
-
-    let filteredGames = [];
-    
-      if (genres === "default") {
-          filteredGames = getState().defaultVideogame;
-      } else {
-        // metemos en el array todos los juego que incluyan el genero que pide el usuario
-        filteredGames = getState().videogames.filter((game) =>
-          (game.genres).includes(genres)
-        )
-      };
-    
-   
+  export const filterByGenre = (genre) => (dispatch) => {   
     dispatch({
       type: "FILTER_BY_GENRE",
-      payload: {
-        genres,
-        videogameGenre: filteredGames,
-      },
+      payload: genre
     });
   };
   
-  
-  export const orderAsc = (type) => (dispatch, getState) => {
-    let videogamesOrder = []
-      let filtered;
-      if(getState().filteredVideogames.length === 0) {
-        filtered = getState().videogames
-      } else {
-       filtered = getState().defaultFilteredVideogames
-      }
-      if(type === "default") {
-        if(getState().filteredVideogames.length === 0 ) {
-          videogamesOrder = getState().defaultVideogame
-         } else {
-          videogamesOrder = getState().filteredVideogames
-         }
-      }
-  
-        if (type === "asc_name") {
-          videogamesOrder = filtered.sort((a, b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-          });
-  
-        } else if (type === "asc_rating") {
-          videogamesOrder = filtered.sort(
-            (a, b) => a.rating - b.rating
-          );
-        }
-    
-      dispatch({
-        type: "ORDER_ASC_RATING",
-        payload: {
-          videogamesOrder,
-          name: type,
-        },
-      });
+
+  export const rating = (ratin) => (dispatch) => {
+     dispatch({
+      type: "RATING",
+      payload: ratin
+     })
   }
+
+
+  export const alfabetic = (type) => (dispatch) => {
+    dispatch({
+     type: "ALFABETIC",
+     payload: type
+    })
+ }
+
+ export const createOrApi = (type) => (dispatch) => {
+  dispatch({
+   type: "CREATE_OR_API",
+   payload: type
+  })
+}
+
   
+  // export const orderAsc = (type) => (dispatch, getState) => {
+  //   let videogamesOrder = []
+  //     let filtered;
+  //     if(getState().filteredVideogames.length === 0) {
+  //       filtered = getState().videogames
+  //     } else {
+  //      filtered = getState().defaultFilteredVideogames
+  //     }
+  //     if(type === "default") {
+  //       if(getState().filteredVideogames.length === 0 ) {
+  //         videogamesOrder = getState().defaultVideogame
+  //        } else {
+  //         videogamesOrder = getState().filteredVideogames
+  //        }
+  //     }
   
-  export const orderDesc = (type) => (dispatch, getState) => {
-    let filtered;
+  //       if (type === "asc_name") {
+  //         videogamesOrder = filtered.sort((a, b) => {
+  //           if (a.name > b.name) return 1;
+  //           if (a.name < b.name) return -1;
+  //           return 0;
+  //         });
+  
+  //       } else if (type === "asc_rating") {
+  //         videogamesOrder = filtered.sort(
+  //           (a, b) => a.rating - b.rating
+  //         );
+  //       }
     
-       if(getState().filteredVideogames.length === 0) {
-        filtered =  getState().videogames
-       } else {
-        filtered = getState().defaultFilteredVideogames
-       }
+  //     dispatch({
+  //       type: "ORDER_ASC_RATING",
+  //       payload: {
+  //         videogamesOrder,
+  //         name: type,
+  //       },
+  //     });
+  // }
+  
+  
+  // export const orderDesc = (type) => (dispatch, getState) => {
+  //   let filtered;
+    
+  //      if(getState().filteredVideogames.length === 0) {
+  //       filtered =  getState().videogames
+  //      } else {
+  //       filtered = getState().defaultFilteredVideogames
+  //      }
      
     
-    let videogamesOrder = []
+  //   let videogamesOrder = []
 
-    if(type === "default") {
-        if(getState().filteredVideogames.length === 0  ) {
-          videogamesOrder = getState().defaultVideogame
-         } else {
-          videogamesOrder = getState().filteredVideogames
-         }
+  //   if(type === "default") {
+  //       if(getState().filteredVideogames.length === 0  ) {
+  //         videogamesOrder = getState().defaultVideogame
+  //        } else {
+  //         videogamesOrder = getState().filteredVideogames
+  //        }
       
-    }
+  //   }
       
-    if (type === "desc_name") {
-      videogamesOrder = filtered.sort((a, b) => {
-        if (a.name < b.name) return 1;
-        if (a.name > b.name) return -1;
-        return 0;
-      });
-    } else if (type === "desc_rating") {
-      videogamesOrder = filtered.sort(
-        (a, b) => b.rating - a.rating
-      );
-    }
+  //   if (type === "desc_name") {
+  //     videogamesOrder = filtered.sort((a, b) => {
+  //       if (a.name < b.name) return 1;
+  //       if (a.name > b.name) return -1;
+  //       return 0;
+  //     });
+  //   } else if (type === "desc_rating") {
+  //     videogamesOrder = filtered.sort(
+  //       (a, b) => b.rating - a.rating
+  //     );
+  //   }
 
-      dispatch({
-        type: "ORDER_DESC_RATING",
-        payload: {
-          videogamesOrder,
-          name: type,
-        },
-      });
-  }
+  //     dispatch({
+  //       type: "ORDER_DESC_RATING",
+  //       payload: {
+  //         videogamesOrder,
+  //         name: type,
+  //       },
+  //     });
+  // }
   
   
-  export const orderByCreator = (source) => (dispatch, getState) => {
-    let videogames;
-     if(source !== "Api") {
-       videogames = getState().videogames.filter(function (G) {
-        return G.source === source
-      });
-     } else {
-       videogames = getState().videogames
-     }
+  // export const orderByCreator = (source) => (dispatch, getState) => {
+  //   let videogames;
+  //    if(source === "creado") {
+  //      videogames = getState().videogames.filter(function (G) {
+  //       return G.source === source
+  //     });
+  //    } 
       
-    dispatch({
-      type: "ORDER_BY_CREATOR",
-      payload: {
-        videogames,
-        source,
-      },
-    });
-  };
+  //    if(source === "Api") {
+  //     videogames = getState().videogames.filter(function (G) {
+  //       return G.source === source
+  //    })
+  //    }
+  //   dispatch({
+  //     type: "ORDER_BY_CREATOR",
+  //     payload: {
+  //       videogames,
+  //       source,
+  //     },
+  //   });
+  // };
 
 
 

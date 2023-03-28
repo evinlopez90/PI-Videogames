@@ -1,30 +1,39 @@
+/* eslint-disable no-fallthrough */
+
 const initialState = {
     videogames: [],
     genres: [],
-    defaultFilteredVideogames: [],
     createVideogame: null,
     searchVideogameById: [],
-    searchVideogameByName: [],
-    filteredVideogames: [],
-    orderBy: "defaul",
-    filterBy: "defaul",
-    defaultVideogame: []
+    defaultVideogame: [],
+    videogamesfilter: [],
+    typegenre: ""
+
   };
+
+
+  
   
   export default function rootReducer(state = initialState, action) {
     switch (action.type) {
       case "GET_VIDEOGAMES":
         return {
           ...state,
-          videogames: action.payload,
-          defaultVideogame: action.payload
+          videogames:  action.payload,
+          defaultVideogame: action.payload,
+          
         };
-  
+        case "ORDER":
+          return {
+            ...state,
+            videogamesOrder: action.payload
+          }
       case "SEARCH_VIDEOGAMES" :
-        return {
+         return {
           ...state,
-          searchVideogameByName: action.payload,
-
+          videogames:  action.payload,
+          defaultVideogame: action.payload,
+          
         };
   
       case "GET_VIDEOGAME_BY_ID":
@@ -44,45 +53,111 @@ const initialState = {
           ...state,
           createVideogame: action.payload,
         };    
-  
+     case "FILTER_BY_GENRE":
+       if(action.payload !== "default") {
+           return {
+            ...state,
+               videogames: [...state.videogames].filter(g => g.genres.includes(action.payload)),
+               typegenre: action.payload
+           }
+       } else {
+          if(state.videogames.length !== state.defaultVideogame.length){
+            return {
+              ...state,
+                 videogames: [...state.defaultVideogame]
+             }
+          } else {
+            return {
+              ...state,
+                 videogames: state.typegenre.length ? [...state.defaultVideogame].filter(g => g.genres.includes(state.typegenre)) : [...state.videogames]
+             }
+          }
+          
+       }
+      case "RATING":
+        if(action.payload === "relevance" ) {
+          return {
+            ...state,
+            videogames: [...state.videogames].sort(
+              (a, b) => b.rating - a.rating
+            )
+          }
+        }
+        else if(action.payload === "default") {
+          if(state.videogames.length === state.defaultVideogame.length){
+            return {
+              ...state,
+                 videogames: [...state.defaultVideogame]
+             }
+          } else {
+            return {
+              ...state,
+                 videogames: state.typegenre.length ? [...state.defaultVideogame].filter(g => g.genres.includes(state.typegenre)) : [...state.videogames]
+             }
+          }
+        } else if(action.payload === "less relevance") {
+           return{
+             ...state,
+             videogames: [...state.videogames].sort(
+              (a, b) => a.rating - b.rating
+            )
+           }
+        };
+      // eslint-disable-next-line no-fallthrough
+      case "ALFABETIC":
+      if(action.payload === "default") {
+        if(state.videogames.length === state.defaultVideogame.length){
+          return {
+            ...state,
+               videogames: [...state.defaultVideogame]
+           }
+        } else {
+          return {
+            ...state,
+               videogames: [...state.videogames]
+           }
+        }
+      } 
+      else if(action.payload === "a-z") {
+          return {
+            ...state,
+            videogames: [...state.videogames].sort((a, b) => {
+              if (a.name > b.name) return 1;
+             if (a.name < b.name) return -1;
+          return 0;
+             })
+          }
+      } else {
+        return {
+          ...state,
+          videogames: [...state.videogames].sort((a, b) => {
+            if (a.name < b.name) return 1;
+           if (a.name > b.name) return -1;
+        return 0;
+           })
+        }
+      };
+     case "CREATE_OR_API":
+      let videogames;
+     if(action.payload === "create") {
+       videogames = state.defaultVideogame.filter(function (G) {
+        return G.source === action.payload
+      });
+     } 
       
-  
-      case "FILTER_BY_GENRE":
-        return {
-          ...state,
-          filteredVideogames: action.payload.videogameGenre,
-          defaultFilteredVideogames: action.payload.videogameGenre,
-          filterBy: action.payload.genre,
-        };
-  
-  
-      case "ORDER_ASC_RATING":
-        return {
-          ...state,
-          filteredVideogames: action.payload.videogamesOrder,
-          videogames: action.payload.videogamesOrder,
-          orderBy: action.payload.name,
-        };
-      case "ORDER_DESC_RATING":
-        return {
-          ...state,
-          filteredVideogames: action.payload.videogamesOrder,
-          videogames: action.payload.videogamesOrder,
-          searchVideogameByName: action.payload.videogamesOrder,
-          orderBy: action.payload.name,
-        };
-  
-      case "ORDER_BY_CREATOR":
+    else if(action.payload === "Api") {
+      videogames = state.defaultVideogame.filter(function (G) {
+        return G.source === action.payload
+     })
+     } else {
+        videogames = state.defaultVideogame
+     }
       return {
         ...state,
-        filteredVideogames: action.payload.videogames,
-        videogames: action.payload.videogames,
-        searchVideogameByName: action.payload.videogames,
-        filterBy: action.payload.source,
-      };
-      
-  
-      default:
+        videogames: videogames
+      }
+
+      default: 
         return state;
     }
   };

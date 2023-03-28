@@ -1,5 +1,5 @@
 .pagination {
-    color: antiquewhite;
+    color: var(--main-color);
     float: left;
     display: flex;
     width: 100%;
@@ -17,7 +17,7 @@
     background-color: #09f;
     border: none;
     border-radius: 10px 0px 0px 10px;
-    background-color: #171A21;
+    background-color: var(--main-bg-color);
     box-shadow: 1px 2px 4px #09f;
     cursor: pointer;
     
@@ -31,7 +31,7 @@
     width: 30px;
     border-radius: 0px 10px 10px 0px;
     font-size: 10px;
-    background-color: #171A21;
+    background-color: var(--main-bg-color);
     margin-right: 20px;
     box-shadow: 1px 2px 4px #09f;
     cursor: pointer;
@@ -60,6 +60,14 @@
     box-shadow: 1px 2px 4px #09f;
 
 }
+
+.ulP a.active {
+    padding: 5px 6px;
+    box-shadow: 1px 2px 4px royalblue;
+    color: var(--main-color);
+    background-color: #09f;
+}
+
 
 
 

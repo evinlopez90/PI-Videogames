@@ -62,7 +62,7 @@ router.get('/', async function (req, res) {
           return game;
         })
          // corto el array de juegos y envio solo 15 al back
-        gamesAPI = gamesAPI.slice(0, 16)
+        gamesAPI = gamesAPI.slice(0, 101)
         res.json(gamesAPI)
       }
       // en el caso dado de que no me enviaron query -> -> esto es  GET | /videogames
@@ -106,8 +106,8 @@ router.get('/', async function (req, res) {
       gamesResults = gamesResults.concat(gamesDb)
       res.json(gamesResults)
     }
-  } catch (err) {
-    res.status(404).json({ err: err.message })
+  } catch (error) {
+    res.status(404).json({ error: error.message })
   }
 })
  
@@ -123,7 +123,6 @@ router.get('/', async function (req, res) {
               description,
                releaseDate, 
                rating,
-               source: 'creado',
                  platforms,
                  image  
          })
@@ -135,7 +134,7 @@ router.get('/', async function (req, res) {
         res.json(newGame)
     
      } catch (error) {
-         res.send('Videogame created successfully!')
+         res.send({error: error.message})
      }
  })
  
